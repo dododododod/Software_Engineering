@@ -1,0 +1,56 @@
+<html>
+<head><style>
+#grk{
+  background-image: url('/dock.jpg');
+  background-size:cover;
+}
+
+#ft{
+  background-color: "black";
+  font-color: "white";
+}
+
+@font-face{
+    font-family: 'quaterback';
+    src: url('/quaterback.ttf') format('truetype');
+  }
+#qtr{
+    font-family: 'quaterback';
+}
+
+</style></head>
+<body id = grk>
+<font id ="qtr" size =4 color = "white">
+<h1>REGISTER.</h1></font><font color = "white">
+<br /><br />
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <font size = "4px"><%= f.label :Email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters at least)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign in" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
+<%= link_to 'home', '/', :style => 'color: white;' %>
+</body></font>
+</html>

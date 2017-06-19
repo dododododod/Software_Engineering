@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  housetype: MyString
+  address: MyString
+  deposit: 1
+  monthlyfee: 1
+  picture: MyString
+  description: MyString
+  managementfee: 1
+  phone: MyString
+
+two:
+  title: MyString
+  housetype: MyString
+  address: MyString
+  deposit: 1
+  monthlyfee: 1
+  picture: MyString
+  description: MyString
+  managementfee: 1
+  phone: MyString

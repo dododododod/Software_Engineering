@@ -1,0 +1,74 @@
+<head><style>
+#video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 90%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+</style></head>
+  <video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+      <source src="/earth.mp4">
+</video>
+<body>
+<%= form_for(@regi) do |f| %>
+  <% if @regi.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@regi.errors.count, "error") %> prohibited this regi from being saved:</h2>
+
+      <ul>
+      <% @regi.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Building_name , :style => 'color: white;'%><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :Residential_type , :style => 'color: white;'%><br>
+    <%= f.text_field :housetype %>
+  </div>
+  <div class="field">
+    <%= f.label :Address , :style => 'color: white;'%><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :Deposit , :style => 'color: white;'%><br>
+    <%= f.number_field :deposit %>
+  </div>
+  <div class="field">
+    <%= f.label :Monthly_fee , :style => 'color: white;'%><br>
+    <%= f.number_field :monthlyfee %>
+  </div>
+  <div class="field">
+    <%= f.label :Management_fee , :style => 'color: white;'%><br>
+    <%= f.number_field :managementfee %>
+  </div>
+  <div class="field">
+    <%= f.label :Description , :style => 'color: white;'%><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :Phone_number, :style => 'color: white;' %><br>
+    <%= f.telephone_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :Room_picture, :style => 'color: white;' %><br>
+    <%= f.file_field :picture %>
+  </div>
+  <div class="actions">
+    <%= f.submit :Submit %>
+  </div>
+<% end %>
+</body>

@@ -1,0 +1,143 @@
+<head><style>
+#video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 90%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+  @font-face{
+    font-family: 'quaterback';
+    src: url('/quaterback.ttf') format('truetype');
+  }
+    #qtr{
+    font-family: 'quaterback';
+  }
+  #tbr{
+ border:2px solid #FFF;
+ border-collapse:collapse;
+}
+#tdd{
+ width:500px;
+ border:1px solid #FFF;
+ height:20px;
+}
+#thh{
+ width:500px;
+ border:1px solid #FFF;
+ height:20px;
+}
+#tdd2{
+ width:100px;
+ border:1px solid #FFF;
+ height:20px;
+}
+  
+</style></head>
+  <video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+      <source src="/satu.mp4">
+</video>
+<h1><font id ="qtr" size=6 color="white">
+PROPERTY DETAIL.</font></h1>
+
+<p id="notice"><%= notice %></p>
+<font color="white">
+<p>
+  <% if @regi.picture.url.nil? %>
+  <h5>No photos registered.</h5><br />
+  <% else %>
+  <img src="<%= @regi.picture.url %>" width="300px", height="200px">
+  <% end %>
+</p>
+
+<p>
+  <strong><font color="#9f8038">Building_name:</font></strong>
+  <%= @regi.title %>
+</p>
+
+<p>
+  <strong><font color="#9f8038">Residential_type:</font></strong>
+  <%= @regi.housetype %>
+</p>
+
+<p>
+  <strong><font color="#9f8038">Address:</font></strong>
+  <%= @regi.address %>
+</p>
+
+<p>
+  <strong><font color="#9f8038">Deposit:</font></strong>
+  <%= @regi.deposit %>
+</p>
+
+<p>
+  <strong><font color="#9f8038">Monthly_fee:</font></strong>
+  <%= @regi.monthlyfee %>
+</p>
+
+<p>
+  <strong><font color="#9f8038">Management_fee:</font></strong>
+  <%= @regi.managementfee %>
+</p>
+
+<p>
+  <strong><font color="#9f8038">Description:</font></strong>
+  <%= @regi.description %>
+</p>
+
+
+<p>
+  <strong><font color="#9f8038">Phone_number:</font></strong>
+  <%= @regi.phone %>
+</p>
+<br />
+
+<h4><font color="#9f8038">Comments</font></h4>
+<table id = "tbr">
+  <thead>
+    <tr>
+    <th id = "tdd2">Nickname</th>
+    <th id = "thh">Comments</th>
+    <th colspan="3"></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @regi.comments.each do |c| %>
+    <tr>
+      <td id = "tdd2"><center><%= c.commenter %></center></td>
+      <td id = "tdd"><center><%= c.body %></center></td>&nbsp;&nbsp;&nbsp;
+      <td><center><%= link_to 'Delete', [c.regi, c] , method: :delete, :style => 'color: blue;', data: { confirm: 'Are you sure you want to delete it?' } %></center></td>
+    </tr>
+  </tbody>
+<% end %>
+</table>
+<br /><br />
+
+<h4><font color="#9f8038">Write comment</font></h4>
+<%= form_for([@regi, @regi.comments.build]) do |f| %>
+ <p>
+  <%= f.label :Nickname %>
+  <br>
+   <%= f.text_field :commenter %>
+ </p>
+ <p>
+   <%= f.label :Comment %>
+   <br>
+   <%= f.text_area :body %>
+ </p>
+ <p>
+   <%= f.submit "Submit" %>
+ </p>
+<% end %>
+<br />
+<%= link_to 'edit_property', edit_regi_path(@regi), :style => 'color: white;' %><br />
+<%= link_to 'back', regis_path, :style => 'color: white;' %>
+</font>

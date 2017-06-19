@@ -1,0 +1,47 @@
+<head>
+<style>
+  #bak{
+    background-image: url('/login.jpg');
+    background-size:cover;
+  }
+  @font-face{
+    font-family: 'quaterback';
+    src: url('/quaterback.ttf') format('truetype');
+  }
+  #qtr{
+    font-family: 'quaterback';
+  }
+</style>
+</head>
+<body id = bak>
+  <br><br><br><br><br>
+  <center>
+<font id ="qtr" size =4 color = "white">
+  <h2>SIGN IN.</h2>
+</font><font size = "4px">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <font color="white"><%= f.label :EMAIL %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %></font>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <font color="white"><%= f.label :remember_me %></font>
+    </div>
+  <% end -%>
+  <div class="actions">
+    <%= f.submit "login"%>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
+<%= link_to 'home', '/', :style => 'color: white;' %>
+  </center></font>
+</body>

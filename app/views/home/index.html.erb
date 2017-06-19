@@ -1,0 +1,114 @@
+
+<head>
+<style>
+#video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 90%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+  #bak{
+    background-video:url('/Star3.mp4');
+    background-size:cover;
+  }
+  @font-face{
+    font-family: 'quaterback';
+    src: url(quaterback.ttf) format('truetype');
+  }
+  @font-face{
+    font-family: 'Charbroil';
+    src: url(Charbroil.ttf) format('truetype');
+  }
+  #qtr{
+    font-family: 'quaterback';
+  }
+  #chr{
+    font-family: 'Charbroil';
+  }
+  .myheader{
+    float: left;
+    width: 100%;
+    height: 150px;
+  }
+  .myheader2{
+    float: left;
+    width: 30%;
+    height: 200px;
+  }
+  .leftMain{
+    float: left;
+    width: 50%;
+  }
+  .rightMain{
+    float: left;
+    width: 50%;
+  }
+</style>
+</head>
+  <video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+      <source src="/star3.mp4">
+</video>
+<body id = "bak" >
+
+<font color = "white">
+  
+  <div id='myheader'>
+    <br>
+    <center>
+    <br>
+    <font id ="qtr" size=7>
+      DONGGUK'S ROOM SAVER
+    </font>
+    <br>
+        <font id = "chr" size=4>
+      We provide the best room for Dongguk University students.
+    </font>
+    </center>
+
+  </div>
+  <br /><br /><br /><br /><br /><br />
+  <center>
+    <% if user_signed_in? %>
+    <% current_user.email %>
+      <a href=<%= edit_user_registration_path %> title="edit information"><img src='contract.png' width = "100px",height="60px"></a>
+      <a href=<%= destroy_user_session_path %> title="sign out">
+      <img src='logout3.png' width = "100px",height="60px">
+      </a>
+    
+    <% else %>
+      <a href=<%= new_user_registration_path %> title="register"><img src='new-user.png' width = "100px",height="100px" alt="register"></a>
+      <a href=<%= new_user_session_path %> title="sign in"><img src='key.png' width = "100px",height="100px" alt="sign in"></a>
+    <% end %>
+ 
+
+    <font id = "chr" size=6 color="#993b8b">
+    </font>
+
+    <a href=<%= regis_path %> title="search"><img src='loupe.png' width = "100px",height="100px" alt="search"></a>
+
+
+  
+
+    <font id = "chr" size=6 color="#993b8b">
+    </font>
+
+    <% if user_signed_in? %>
+    <% current_user.email %>
+      <a href=<%= new_regi_path %> title ="for sale/lease"><img src='rent.png' width = "100px",height="100px"></a>
+    <% else %>
+      <a href=<%= new_user_session_path %> title="for sale/lease"><img src='rent.png' width = "100px",height="100px"></a>
+    <% end %>
+    
+    </center>
+    
+ 
+</font>
+</body>
